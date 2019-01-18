@@ -19,7 +19,7 @@
 				// give us our self
 				var self = this;
 
-				// set global vars
+				// set global vars for our object
 				self.container = jQuery( '#' + args.containerId );
 				self.containerId = args.containerId;
 				self.starClass = 'sr-star' + args.containerId;
@@ -39,19 +39,32 @@
 				    }
 
 					jQuery( '.' + self.starClass ).on( 'mouseover', function() { // mouseover a star
+						// determine the percent width on mouseover of any star
 						var percentWidth = 20 * jQuery( this ).data( 'stars' );
+
+						// set the percent width  of the star bar to the new mouseover width
 						$( '.sr-star-bar' + self.containerId ).css( 'width', percentWidth + '%' );
 					});
 
 					jQuery( '.' + self.starClass ).on( 'mouseout', function() { // mouseout of a star
+						// return the star rating system percent to its previous percent on mouse out of any star
 						jQuery( '.sr-star-bar' + self.containerId ).css( 'width', self.ratingPercent );
 					});
 
 					jQuery( '.' + self.starClass ).on( 'click', function() { // click on a star
+						// ner rating set to the number of stars the user clicked on
 						self.newRating = jQuery( this ).data( 'stars' );
+
+						// determine the percent width based on the stars clicked on
 						var percentWidth = 20 * jQuery( this ).data( 'stars' );
+
+						// new rating percent is the number of stars clicked on
 						self.ratingPercent = percentWidth + '%';
+
+						// set new star bar percent width
 						$( '.sr-star-bar' + self.containerId ).css( 'width', percentWidth + '%' );
+
+						// run the on rate function passed in when the object was created
 						self.onRate();
 					} );	
 				}
@@ -91,25 +104,25 @@
 		} )();
 
 		$( function() {
-			var rating = new starRating( {
-				containerId: 'star_rating',
-				starWidth: 100,
-				starHeight: 100,
-				ratingPercent: '50%',
-				canRate: true,
-				onRate: function() {
+			var rating = new starRating( { // create first star rating system on page load
+				containerId: 'star_rating', // element id in the dom for this star rating system to use
+				starWidth: 100, // width of stars
+				starHeight: 100, // height of stars
+				ratingPercent: '50%', // percentage star system should start 
+				canRate: true, // can the user rate this star system?
+				onRate: function() { // this function runs when a star is clicked on
 					console.log( rating );
 					alert('You rated ' + rating.newRating + ' starts' );
 				}
 			} );
 
-			var rating2 = new starRating( {
-				containerId: 'star_rating2',
-				starWidth: 100,
-				starHeight: 100,
-				ratingPercent: '20%',
-				canRate: true,
-				onRate: function() {
+			var rating2 = new starRating( { // create second star rating system on page load
+				containerId: 'star_rating2', // element id in the dom for this star rating system to use
+				starWidth: 100, // width of stars
+				starHeight: 100, // height of stars
+				ratingPercent: '20%', // percentage star system should start 
+				canRate: true, // can the user rate this star system?
+				onRate: function() { // this function runs when a star is clicked on
 					console.log( rating2 );
 					alert('You rated ' + rating2.newRating + ' starts' );
 				}
@@ -118,12 +131,14 @@
 	</script>
 </head>
 <body>
+	<!-- first continer element for the first star rating system-->
 	<div id="star_rating">
 	</div>
 
 	<br />
 	<br />
 
+	<!-- second continer element for the first star rating system-->
 	<div id="star_rating2">
 	</div>
 </body>
