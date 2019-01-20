@@ -1,0 +1,66 @@
+[
+  {
+    "imageUrl": "https://cdn.thetrackernetwork.com/cdn/fortnite/51946845_large.png",
+    "manifestId": 6845,
+    "name": "The Ice Queen",
+    "rarity": "Fine",
+    "storeCategory": "BRWeeklyStorefront",
+    "vBucks": 2000
+  },
+  {
+    "imageUrl": "https://cdn.thetrackernetwork.com/cdn/fortnite/30DE6860_large.png",
+    "manifestId": 6860,
+    "name": "Icebringer",
+    "rarity": "Sturdy",
+    "storeCategory": "BRWeeklyStorefront",
+    "vBucks": 800
+  },
+  {
+    "imageUrl": "https://cdn.thetrackernetwork.com/cdn/fortnite/D4AA21_large.png",
+    "manifestId": 21,
+    "name": "Reaper",
+    "rarity": "Sturdy",
+    "storeCategory": "BRDailyStorefront",
+    "vBucks": 800
+  },
+  {
+    "imageUrl": "https://cdn.thetrackernetwork.com/cdn/fortnite/A23D5597_large.png",
+    "manifestId": 5597,
+    "name": "Pumpernickel",
+    "rarity": "Sturdy",
+    "storeCategory": "BRDailyStorefront",
+    "vBucks": 500
+  },
+  {
+    "imageUrl": "https://cdn.thetrackernetwork.com/cdn/fortnite/73C95527_large.png",
+    "manifestId": 5527,
+    "name": "Dynamo",
+    "rarity": "Sturdy",
+    "storeCategory": "BRDailyStorefront",
+    "vBucks": 1200
+  },
+  {
+    "imageUrl": "https://cdn.thetrackernetwork.com/cdn/fortnite/CF6F5582_large.png",
+    "manifestId": 5582,
+    "name": "Wreck Raider",
+    "rarity": "Quality",
+    "storeCategory": "BRDailyStorefront",
+    "vBucks": 1500
+  },
+  {
+    "imageUrl": "https://cdn.thetrackernetwork.com/cdn/xth/A489upload.png",
+    "manifestId": 6494,
+    "name": "Battle Pass Tiers",
+    "rarity": "Quality",
+    "storeCategory": "BRDailyStorefront",
+    "vBucks": 1500
+  },
+  {
+    "imageUrl": "https://cdn.thetrackernetwork.com/cdn/fortnite/7FAE4819_large.png",
+    "manifestId": 4819,
+    "name": "Breaking Point",
+    "rarity": "Handmade",
+    "storeCategory": "BRDailyStorefront",
+    "vBucks": 200
+  }
+]
