@@ -143,7 +143,7 @@
 	 */
 	function getStoreDate() {
 		// get todays date and tomorrows date in case item shop has refreshed
-		$date = date( 'Y-m-y' );
+		$date = date( 'Y-m-d' );
 		$tomorrowsDate = date( 'Y-m-d', strtotime(' +1 day') );
 
 		if ( date( 'G' ) >= 18 ) { // if today, and greater than 18 hours utc, (6pm) new item shop is out so gen file for next day
