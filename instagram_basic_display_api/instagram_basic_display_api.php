@@ -7,7 +7,9 @@
 		private $_redirectUrl = INSTAGRAM_APP_REDIRECT_URI;
 		private $_getCode = '';
 		private $_apiBaseUrl = 'https://api.instagram.com/';
+		private $_graphBaseUrl = 'https://graph.instagram.com/';
 		private $_userAccessToken = '';
+		private $_userAccessTokenExpires = '';
 
 		public $authorizationUrl = '';
 		public $hasUserAccessToken = false;
@@ -27,6 +29,10 @@
 			return $this->_userAccessToken;
 		}
 
+		public function getUserAccessTokenExpires() {
+			return $this->_userAccessTokenExpires;
+		}
+
 		private function _setAuthorizationUrl() {
 			$getVars = array( 
 				'app_id' => $this->_appId,
@@ -44,6 +50,11 @@
 				$userAccessTokenResponse = $this->_getUserAccessToken();
 				$this->_userAccessToken = $userAccessTokenResponse['access_token'];
 				$this->hasUserAccessToken = true;
+
+				// get long lived access token
+				$longLivedAccessTokenResponse = $this->_getLongLivedUserAccessToken();
+				$this->_userAccessToken = $longLivedAccessTokenResponse['access_token'];
+				$this->_userAccessTokenExpires = $longLivedAccessTokenResponse['expires_in'];
 			}
 		}
 
@@ -64,6 +75,20 @@
 			return $response;
 		}
 
+		private function _getLongLivedUserAccessToken() {
+			$params = array(
+				'endpoint_url' => $this->_graphBaseUrl . 'access_token',
+				'type' => 'GET',
+				'url_params' => array(
+					'client_secret' => $this->_appSecret,
+					'grant_type' => 'ig_exchage_token',
+				)
+			);
+
+			$response = $this->_makeApiCall( $params );
+			return $response;
+		}
+
 		private function _makeApiCall( $params ) {
 			$ch = curl_init();
 
@@ -72,6 +97,11 @@
 			if ( 'POST' == $params['type'] ) { // post request
 				curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $params['url_params'] ) );
 				curl_setopt( $ch, CURLOPT_POST, 1 );
+			} elseif ( 'GET' == $params['type'] ) { // get request
+				$params['url_params']['access_token'] = $this->_userAccessToken;
+
+				//add params to endpoint
+				$endpoint .= '?' . http_build_query( $params['url_params'] );
 			}
 
 			// general curl options
