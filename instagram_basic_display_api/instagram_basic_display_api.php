@@ -13,6 +13,7 @@
 
 		public $authorizationUrl = '';
 		public $hasUserAccessToken = false;
+		public $userId = '';
 
 		function __construct( $params ) {
 			// save instagram code
@@ -49,10 +50,12 @@
 			if ( $params['access_token'] ) { // we have an access token
 				$this->_userAccessToken = $params['access_token'];
 				$this->hasUserAccessToken = true;
+				$this->userId = $params['user_id'];
 			} elseif ( $params['get_code'] ) { // try and get an access token
 				$userAccessTokenResponse = $this->_getUserAccessToken();
 				$this->_userAccessToken = $userAccessTokenResponse['access_token'];
 				$this->hasUserAccessToken = true;
+				$this->userId = $userAccessTokenResponse['user_id'];
 
 				// get long lived access token
 				$longLivedAccessTokenResponse = $this->_getLongLivedUserAccessToken();
@@ -105,6 +108,32 @@
 			return $response;
 		}
 
+		public function getUsersMedia() {
+			$params = array(
+				'endpoint_url' => $this->_graphBaseUrl . $this->userId . '/media',
+				'type' => 'GET',
+				'url_params' => array(
+					'fields' => 'id,caption,media_type,media_url',
+				)
+			);
+
+			$response = $this->_makeApiCall( $params );
+			return $response;
+		}
+
+		public function getPaging( $pagingEndpoint ) {
+			$params = array(
+				'endpoint_url' => $pagingEndpoint,
+				'type' => 'GET',
+				'url_params' => array(
+					'paging' => true
+				)
+			);
+
+			$response = $this->_makeApiCall( $params );
+			return $response;
+		}
+
 		private function _makeApiCall( $params ) {
 			$ch = curl_init();
 
@@ -113,7 +142,7 @@
 			if ( 'POST' == $params['type'] ) { // post request
 				curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $params['url_params'] ) );
 				curl_setopt( $ch, CURLOPT_POST, 1 );
-			} elseif ( 'GET' == $params['type'] ) { // get request
+			} elseif ( 'GET' == $params['type'] && !$params['url_params']['paging'] ) { // get request
 				$params['url_params']['access_token'] = $this->_userAccessToken;
 
 				//add params to endpoint
