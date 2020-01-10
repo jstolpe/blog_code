@@ -24,6 +24,48 @@
 	<h3>Media Count: <?php echo $user['media_count']; ?></h3>
 	<h4>Account Type: <?php echo $user['account_type']; ?></h4>
 	<hr />
+	<h3>Highlighted Post</h3>
+	<?php $highlightedPostId = '17853723505739773'; ?>
+	<div>Media ID: <?php echo $highlightedPostId; ?></div>
+	<div>
+		<?php
+			$media = $ig->getMedia( $highlightedPostId );
+			$mediaChildren = $ig->getMediaChildren( $highlightedPostId );
+		?>
+		<h4>Raw Data</h4>
+		<textarea style="width:100%;height:400px;">
+			Media <?php print_r( $media ); ?>
+			Children <?php print_r( $mediaChildren ); ?>
+		</textarea>
+	</div>
+	<div style="margin-bottom:20px;margin-top:20px;border:3px solid #333">
+		<div>
+			<?php foreach ( $mediaChildren['data'] as $child ) : ?>
+				<?php if ( 'IMAGE' == $child['media_type'] ) : ?>
+					<img style="height:320px" src="<?php echo $child['media_url']; ?>" />
+				<?php else : ?>
+					<video height="240" width="320" controls>
+						<source src="<?php echo $child['media_url']; ?>">
+					</video>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</div>
+		<div>
+			<b>Caption: <?php echo $media['caption']; ?></b>
+		</div>
+		<div>
+			Posted by: <?php echo $media['username']; ?> at <?php echo $media['timestamp']; ?>
+		</div>
+		<div>
+			Link: <a href="<?php echo $media['permalink']; ?>" target="_blank"><?php echo $media['permalink']; ?></a>
+		</div>
+		<div>
+			ID: <?php echo $media['id']; ?>
+		</div>
+		<div>
+			Media Type: <?php echo $media['media_type']; ?>
+		</div>
+	</div>
 	<?php $usersMedia = $ig->getUsersMedia(); ?>
 	<h3>Users Media Page 1 (<?php echo count( $usersMedia['data'] ); ?>)</h3>
 	<h4>Raw Data</h4>

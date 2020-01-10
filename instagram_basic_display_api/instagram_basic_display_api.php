@@ -134,6 +134,32 @@
 			return $response;
 		}
 
+		public function getMedia( $mediaId ) {
+			$params = array(
+				'endpoint_url' => $this->_graphBaseUrl . $mediaId,
+				'type' => 'GET',
+				'url_params' => array(
+					'fields' => 'id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username'
+				)
+			);
+
+			$response = $this->_makeApiCall( $params );
+			return $response;
+		}
+
+		public function getMediaChildren( $mediaId ) {
+			$params = array(
+				'endpoint_url' => $this->_graphBaseUrl . $mediaId . '/children',
+				'type' => 'GET',
+				'url_params' => array(
+					'fields' => 'id,media_type,media_url,permalink,thumbnail_url,timestamp,username'
+				)
+			);
+
+			$response = $this->_makeApiCall( $params );
+			return $response;
+		}
+
 		private function _makeApiCall( $params ) {
 			$ch = curl_init();
 
