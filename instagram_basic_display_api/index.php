@@ -25,7 +25,7 @@
 	<h4>Account Type: <?php echo $user['account_type']; ?></h4>
 	<hr />
 	<h3>Highlighted Post</h3>
-	<?php $highlightedPostId = '17853723505739773'; ?>
+	<?php $highlightedPostId = 'MEDIA-ID'; ?>
 	<div>Media ID: <?php echo $highlightedPostId; ?></div>
 	<div>
 		<?php
