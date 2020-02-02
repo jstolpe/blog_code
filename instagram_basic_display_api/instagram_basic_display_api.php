@@ -87,7 +87,7 @@
 				'type' => 'GET',
 				'url_params' => array(
 					'client_secret' => $this->_appSecret,
-					'grant_type' => 'ig_exchage_token',
+					'grant_type' => 'ig_exchange_token',
 				)
 			);
 
