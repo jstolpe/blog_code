@@ -3,7 +3,10 @@
 This repo contains code from my YouTube/blog tutorials.
 
 YouTube -> https://youtube.com/justinstolpe
-Blog: -> https://justinstolpe.com/blog/
+
+Blog -> https://justinstolpe.com/blog/
+
+My Website -> https://justinstolpe.com
 
 ==========================================================================
     
