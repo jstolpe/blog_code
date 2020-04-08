@@ -12,6 +12,7 @@ def getCreds() :
 	creds['debug'] = 'no'
 	creds['page_id'] = 'FB-PAGE-ID'
 	creds['instagram_account_id'] = 'INSTAGRAM-BUSINESS-ACCOUNT-ID'
+	creds['ig_username'] = 'IG-USERNAME'
 
 	return creds
 
