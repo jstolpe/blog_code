@@ -1,0 +1,6 @@
+Array
+(
+    [hub_mode] => subscribe
+    [hub_challenge] => 1954612326
+    [hub_verify_token] => 12345
+)
