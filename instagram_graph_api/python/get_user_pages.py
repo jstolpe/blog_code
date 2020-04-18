@@ -11,21 +11,21 @@ def getUserPages( params ) :
 
 	"""
 
-	endpointParams = dict()
-	endpointParams['access_token'] = params['access_token']
+	endpointParams = dict() # parameter to send to the endpoint
+	endpointParams['access_token'] = params['access_token'] # access token
 
-	url = params['endpoint_base'] + 'me/accounts'
+	url = params['endpoint_base'] + 'me/accounts' # endpoint url
 
-	return makeApiCall( url, endpointParams, params['debug'] )
+	return makeApiCall( url, endpointParams, params['debug'] ) # make the api call
 
-params = getCreds()
-params['debug'] = 'no'
-response = getUserPages( params )
+params = getCreds() # get creds
+params['debug'] = 'no' # set debug
+response = getUserPages( params ) # get debug info
 
-print "\n---- FACEBOOK PAGE INFO ----\n"
-print "Page Name:"
-print response['json_data']['data'][0]['name']
-print "\nPage Category:"
-print response['json_data']['data'][0]['category']
-print "\nPage Id:"
-print response['json_data']['data'][0]['id']
+print "\n---- FACEBOOK PAGE INFO ----\n" # section heading
+print "Page Name:" # label
+print response['json_data']['data'][0]['name'] # display name
+print "\nPage Category:" # label
+print response['json_data']['data'][0]['category'] # display category
+print "\nPage Id:" # label
+print response['json_data']['data'][0]['id'] # display id
