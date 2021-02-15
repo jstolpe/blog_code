@@ -1,0 +1,40 @@
+language: php
+
+php:
+  - 5.6
+  - 7.0
+  - 7.1
+  - 7.2
+  - 7.3
+  - 7.4
+
+env:
+  matrix:
+    - dependencies=lowest
+    - dependencies=highest
+  global:
+    - composer_flags="--no-interaction --no-ansi --no-progress --no-suggest --verbose"
+
+before_install:
+  - composer self-update
+  - composer clear-cache
+
+install:
+  - if [ -n "$GIT_HUB_TOKEN" ]; then composer config -g github-oauth.github.com "$GIT_HUB_TOKEN"; fi;
+  - if [ "$dependencies" = "highest" ]; then composer update $composer_flags; fi;
+  - if [ "$dependencies" = "lowest" ]; then composer update $composer_flags --prefer-lowest --prefer-stable; fi;
+
+script:
+  - vendor/bin/phpunit test/unit
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  slack:
+    if: branch = main
+    on_pull_requests: false
+    on_success: never
+    on_failure: change
+    rooms:
+      - secure: UiDCIJkcMNmiUGz1S0+sgZ8vWnDnj2X6Vq9YXP/UTufkdmfJallrxbrZISM24rgdObcC4vXfqRPmK5/fIPAKoniAd5JNIcQxtuCJox8HIqtSsOoU4Ffx1s2W6gGSB43howJkufROv1Au2P9I5fO34R7kdSTeUShFVBKTRYMUL6BPyeE+wb1ohl2d9afEo8yCppOvJe/JXccAgS1mHyRAoWn9SiA2o5cr7BWv1W+RUwOr762WZ+baaAT6zh0bnQ7fMzWfY1JZQQMxCx3M+Q8RQTdFcjGZGAfipAPs37VZd5ePMkYGFICgs2cp1jE85yNUnGZaxXx/XyamjQhqXrMV4cRbNwiI85sVJNxwoREZLROKPwZpuLQ7mZwm0lG6zpMbLPGtTlZmhUpd17qgr4e9K29AoE4+/ewNJmiiUn11+FYiUbimBSxuHomX11Bii7zbt1nsM8/f8nk10K2mr/jyiG3ANkHduXwKvwbMcPruBxw5DEJ54Q4OxhW6Oh2kkIqGc9HwF1AZJWec4HtMFvc00siqaydFVCN9etJSsJJS8Oe4a5erEg06fy4P5TQ74dzTkICeeShO4Fh5u8x95U6zV1zTJ2XR/RwWQDXxkkO5NH+0g4iEPneb36dMQiRoSzcKVxTE0ABM2BMVrb1xKHqhF51zSDaEOYb6UNsqJh3Qed0=

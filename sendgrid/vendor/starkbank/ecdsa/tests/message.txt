@@ -1,0 +1,9 @@
+{
+	"transaction": {
+		"amount": 50000,
+		"receiver": "",
+		"description": "Sample transfer between workspaces",
+		"externalId": "123456",
+		"tags": ["john", "smith"]
+	}
+}

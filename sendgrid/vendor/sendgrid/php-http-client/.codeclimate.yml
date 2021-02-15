@@ -1,0 +1,18 @@
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - "php"
+  phpcodesniffer:
+    enabled: true
+    config:
+      file_extensions: "php"
+      standard: "PSR1,PSR2"
+ratings:
+  paths:
+  - "**.php"
+exclude_paths:
+  - "examples/**/*"
+  - "test/**/*"
+  - "vendor/**/*"

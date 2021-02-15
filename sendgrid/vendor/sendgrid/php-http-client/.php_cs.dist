@@ -1,0 +1,20 @@
+<?php
+
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__ . '/lib');
+
+return PhpCsFixer\Config::create()
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@PSR2' => true,
+        '@Symfony' => true,
+        'array_syntax' => ['syntax' => 'short'],
+        'cast_spaces' => ['space' => 'single'],
+        'yoda_style' => false,
+        'concat_space' => ['spacing' => 'one'],
+        'phpdoc_summary' => false,
+        'combine_consecutive_unsets' => true,
+        'final_internal_class' => true,
+        'global_namespace_import' => ['import_classes' => false],
+    ])
+    ->setFinder($finder);
