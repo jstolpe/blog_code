@@ -45,7 +45,18 @@
         echo '<h1>Long Lived Access Token</h1>';
         print_r( $accessToken );
     } else { // display login url
-        $permissions = ['public_profile', 'instagram_basic', 'pages_show_list', 'instagram_manage_insights', 'instagram_manage_comments', 'manage_pages'];
+        $permissions = [
+            'public_profile', 
+            'instagram_basic', 
+            'pages_show_list', 
+            'instagram_manage_insights', 
+            'instagram_manage_comments', 
+            'manage_pages',
+            'ads_management', 
+            'business_management', 
+            'instagram_content_publish', 
+            'pages_read_engagement'
+        ];
         $loginUrl = $helper->getLoginUrl( FACEBOOK_REDIRECT_URI, $permissions );
     
         echo '<a href="' . $loginUrl . '">
