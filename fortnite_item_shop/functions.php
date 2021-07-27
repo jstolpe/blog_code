@@ -124,8 +124,8 @@
 				$validFiles[] = array(
 					'file' => $file,
 					'date' => $namePieces[0],
-					'link_json' => 'http://' . $_SERVER['HTTP_HOST'] . '/blog_code_done/fortnite_item_shop/store_json_files/' . $file,
-					'link_store' => 'http://' . $_SERVER['HTTP_HOST'] . '/blog_code_done/fortnite_item_shop/?date=' . $namePieces[0],
+					'link_json' => 'http://' . $_SERVER['HTTP_HOST'] . '/blog_code/fortnite_item_shop/store_json_files/' . $file,
+					'link_store' => 'http://' . $_SERVER['HTTP_HOST'] . '/blog_code/fortnite_item_shop/?date=' . $namePieces[0],
 				);
 			}
 		}
