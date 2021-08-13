@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Simple Loader HTML, CSS, and JavaScript
+		</title>
+		<style>
+			body {
+				padding: 0;
+				margin: 0;
+				font-family: 'Helvetica';
+			}
+
+			#loading_container {
+				display: none;
+			}
+
+			.loading-overlay {
+				background: rgba( 26, 26, 26, 0.6 );
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				z-index: 1;
+			}
+
+			.loader-container {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate( -50%, -50% );
+				z-index: 2;
+			}
+
+			.loader-container img {
+				height: 50px;
+				width: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>
+			Simple Loader 
+		</h1>
+		<h2>
+			HTML, CSS, JavaScript
+		</h2>
+		<div id="loading_container">
+			<div class="loading-overlay">
+					
+			</div>
+			<div class="loader-container">
+				<img src="loader.gif" />
+			</div>
+		</div>
+		<a id="test_loader" href="#">
+			Test Simple Loader
+		</a>
+		<p>
+			Clicking test will show the loader for 1 second and then hide it again.
+		</p>
+		<script>
+			document.getElementById( 'test_loader' ).addEventListener( 'click', function() {
+				showLoader();
+
+				setTimeout( function() {
+					hideLoader();
+				}, 1000 );
+			} );
+
+			function showLoader() {
+				document.getElementById( 'loading_container' ).style.display = 'block';	
+			}
+
+			function hideLoader() {
+				document.getElementById( 'loading_container' ).style.display = 'none';	
+			}
+		</script>
+	</body>
+</html>
