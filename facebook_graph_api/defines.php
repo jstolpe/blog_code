@@ -6,7 +6,11 @@
 	define( 'FB_GRAPH_VERSION', 'v12.0' );
 	define( 'FB_GRAPH_DOMAIN', 'https://graph.facebook.com/' );
 
+	// facebook user access token
 	$userAccessToken = '{FB-USER-ACCESS-TOKEN}';
 
+	// facebook page id
 	$pageId = '{FB-PAGE-ID}';
+
+	// facebook page access token
 	$pageAccessToken = '{FB-PAGE-ACCESS-TOKEN}';
