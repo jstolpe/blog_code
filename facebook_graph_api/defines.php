@@ -5,3 +5,8 @@
 	define( 'FB_REDIRECT_URI', '{REDIRECT-URI}' );
 	define( 'FB_GRAPH_VERSION', 'v12.0' );
 	define( 'FB_GRAPH_DOMAIN', 'https://graph.facebook.com/' );
+
+	$userAccessToken = '{FB-USER-ACCESS-TOKEN}';
+
+	$pageId = '{FB-PAGE-ID}';
+	$pageAccessToken = '{FB-PAGE-ACCESS-TOKEN}';

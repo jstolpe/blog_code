@@ -65,7 +65,7 @@
 	 * Endpoint https://graph.facebook.com/{fb-graph-version}/oauth/access_token?client_id{app-id}&client_secret={app-secret}&redirect_uri={redirect_uri}&code={code}
 	 *
 	 * @param string $code code returned from facebook, exchange for access token
-	 * @return array $response
+	 * @return array
 	 */
 	function getAccessTokenWithCode( $code ) {
 		// endpoint for getting an access token with code
@@ -80,4 +80,25 @@
 
 		// make the api call
 		return makeApiCall( $endpoint, 'GET', $params );
+	}
+
+	/**
+	 * Get an access token with the code from facebook.
+	 *
+	 * Endpoint https://graph.facebook.com/{fb-graph-version}/{endpoint-path}
+	 *
+	 * @param array $params Params for fb endpoint.
+	 * @return array
+	 */
+	function getFacebookUserInfo( $params ) {
+		// endpoint for getting an access token with code
+		$endpoint = FB_GRAPH_DOMAIN . FB_GRAPH_VERSION . '/' . $params['endpoint_path'];
+	
+		$endpointParams = array( // params for the endpoint
+			'fields' => $params['fields'],
+			'access_token' => $params['access_token']
+		);
+
+		// make the api call
+		return makeApiCall( $endpoint, $params['request_type'], $endpointParams );
 	}
