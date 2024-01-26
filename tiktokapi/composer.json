@@ -1,0 +1,5 @@
+{
+    "require": {
+        "jstolpe/tiktok-api-php-sdk": "^1.0"
+    }
+}
