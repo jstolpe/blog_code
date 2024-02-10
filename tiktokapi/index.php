@@ -16,7 +16,8 @@
 	$scopes = array( // a list of approved scopes by tiktok for your app
 	    'user.info.basic',
 	    'user.info.profile',
-	    'user.info.stats'
+	    'user.info.stats',
+	    'video.list'
 	);
 
 	// get TikTok login url
